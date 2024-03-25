@@ -1,0 +1,45 @@
+<jsp:root
+        xmlns:jsp="http://java.sun.com/JSP/Page"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        version="2.0"
+>
+
+    <!-- fixer l'encodage de sortie         -->
+    <!-- syntaxe XML de la directive @ page -->
+    <jsp:directive.page contentType="text/xml; charset=iso-8859-1"/>
+
+    <!-- fixer le format de sortie (comme XSL) -->
+    <jsp:output
+            omit-xml-declaration="false"
+            doctype-root-element="messages"
+            doctype-system="http://monserveur.fr/messages.dtd"/>
+
+    <messages>
+
+        <!-- un message en dur -->
+        <message>
+            Hello
+        </message>
+
+        <!-- évaluation java comme <%= %> -->
+        <!-- syntaxe XML des expressions  -->
+        <message>
+            <jsp:expression>10 + 20</jsp:expression>
+        </message>
+
+        <!-- un message dynamique -->
+        <jsp:element name="message">
+            <jsp:attribute name="class">important</jsp:attribute>
+            <jsp:body>
+                Bizarre
+            </jsp:body>
+        </jsp:element>
+
+        <!-- JSTL + EL -->
+        <message>
+            <c:out value="${11 + 22}"/>
+        </message>
+
+    </messages>
+
+</jsp:root>
